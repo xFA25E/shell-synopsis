@@ -1,0 +1,9 @@
+#+TITLE: shell-synopsis
+
+Show shell command synopsis in minibuffer with eldoc by parsing man pages
+
+To enable add ~shell-synopsis-setup~ to ~shell-mode-hook~
+
+~(add-hook 'shell-mode-hook 'shell-synopsis-setup)~
+
+This package was heavily inspired by *esh-help* package

@@ -68,15 +68,15 @@
 
 (defun shell-synopsis-parse-synopsis (manual-page)
   "Parse synopsis from `MANUAL-PAGE'."
-  (loop for skip-line on (split-string manual-page "\n")
-        if (string-match-p "^SYNOPSIS$" (car skip-line))
-        return (loop for line in (cdr skip-line)
-                     if (not (string-match-p "^[[:alnum:]]+" line))
-                     concat (concat (string-trim line) "\n") into result
-                     else
-                     return (string-trim-right result)
-                     finally
-                     return (string-trim-right result))))
+  (cl-loop for skip-line on (split-string manual-page "\n")
+           if (string-match-p "^SYNOPSIS$" (car skip-line))
+           return (cl-loop for line in (cdr skip-line)
+                           if (not (string-match-p "^[[:alnum:]]+" line))
+                           concat (concat (string-trim line) "\n") into result
+                           else
+                           return (string-trim-right result)
+                           finally
+                           return (string-trim-right result))))
 
 (defun shell-synopsis-make-synopsis (command)
   "Make synopsis for `COMMAND'."
